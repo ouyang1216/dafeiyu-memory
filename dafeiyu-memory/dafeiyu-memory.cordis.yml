@@ -1,0 +1,26 @@
+# Local-first memory server for the Dafeiyu persona.
+# Build before loading: npm run build
+- insert:
+    - id: memory-dafeiyu
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: dafeiyu_memory
+        transport: stdio
+        command: !!js process.execPath
+        args:
+          - !!js >-
+            process.env.DAFEIYU_MEMORY_SERVER_ENTRY?.trim() ||
+            (() => {
+              throw new Error('DAFEIYU_MEMORY_SERVER_ENTRY must point at dafeiyu-memory-mcp-server/dist/index.js');
+            })()
+        env:
+          ELECTRON_RUN_AS_NODE: '1'
+          DAFEIYU_MEMORY_DB: !!js >-
+            process.env.DAFEIYU_MEMORY_DB?.trim() ||
+            process.getBuiltinModule('node:path').join(
+              process.getBuiltinModule('node:os').homedir(),
+              '.dafeiyu-memory',
+              'memory.sqlite3'
+            )
+        toolCallTimeoutMs: 60000
+        failOnStartupError: true

@@ -1,0 +1,42 @@
+<evaluation>
+  <qa_pair>
+    <question>在固定种子记忆中，查找用户“当前”的紧急联系人。请同时区分已经过期的旧联系人，只输出当前联系人的中文姓名。</question>
+    <answer>林舟</answer>
+  </qa_pair>
+  <qa_pair>
+    <question>查找 2025 年夏季在青岛进行的那次跨城差旅，再确定该次差旅对应的会议名称。只输出会议名称原文。</question>
+    <answer>Blue Current Forum</answer>
+  </qa_pair>
+  <qa_pair>
+    <question>先在人物关系中确认谁负责财务审批，再查找此人在 2025-05-12 批准的预算项目。只输出项目名称，不含“Project”前缀。</question>
+    <answer>Atlas</answer>
+  </qa_pair>
+  <qa_pair>
+    <question>对于 2026-12-31 这个时间点，主用浓缩咖啡豆供应商是谁？请结合记录的有效期判断，只输出当前有效记录中的供应商中文名。</question>
+    <answer>云岭咖啡</answer>
+  </qa_pair>
+  <qa_pair>
+    <question>查找发布代号相关记忆及其纠正版本。按最新有效版本回答，当前发布代号是什么？只输出代号。</question>
+    <answer>ORCHID-41</answer>
+  </qa_pair>
+  <qa_pair>
+    <question>在默认召回策略下，查找用户已经确认的食物禁忌，同时排除被抑制的旧记录。只输出已确认禁忌的食材中文名。</question>
+    <answer>牡蛎</answer>
+  </qa_pair>
+  <qa_pair>
+    <question>尝试召回一条已经删除的临时储物柜密码。若该内容不属于可召回的活动记忆，只输出大写英文单词 NONE。</question>
+    <answer>NONE</answer>
+  </qa_pair>
+  <qa_pair>
+    <question>Orion 看板负责人在同一有效期内存在冲突记录。对于 2025-04-01 这个时间点，按两条记录的 factual_confidence 选择更高的一条。只输出负责人中文姓名。</question>
+    <answer>沈禾</answer>
+  </qa_pair>
+  <qa_pair>
+    <question>分别查找 2025 年第二季度规划会和青岛差旅的开始日期，计算后一个日期减前一个日期的日历天数。只输出整数。</question>
+    <answer>76</answer>
+  </qa_pair>
+  <qa_pair>
+    <question>读取当前种子范围的统计，将 suppressed_memories 与 deleted_memories 相加。只输出整数。</question>
+    <answer>2</answer>
+  </qa_pair>
+</evaluation>

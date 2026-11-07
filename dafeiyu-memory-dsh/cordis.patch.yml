@@ -1,0 +1,32 @@
+# DSH adapter for dafeiyu-memory-mcp-server.
+#
+# The server entry is resolved from this bundle's installed dependencies,
+# never from a checkout path. process.execPath keeps Desktop on its packaged
+# Node runtime; ELECTRON_RUN_AS_NODE makes the Electron executable behave as
+# Node for the stdio child.
+- insert:
+    - id: memory-dafeiyu
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: dafeiyu_memory
+        transport: stdio
+        command: !!js process.execPath
+        args:
+          - !!js >-
+            (() => {
+              const module = process.getBuiltinModule('node:module');
+              const profile = module.createRequire(new URL('package.json', ctx.baseUrl));
+              const bundle = profile.resolve('dafeiyu-memory-dsh/package.json');
+              return module.createRequire(bundle).resolve('dafeiyu-memory-mcp-server');
+            })()
+        env:
+          ELECTRON_RUN_AS_NODE: '1'
+          DAFEIYU_MEMORY_DB: !!js >-
+            process.env.DAFEIYU_MEMORY_DB?.trim() ||
+            process.getBuiltinModule('node:path').join(
+              process.getBuiltinModule('node:os').homedir(),
+              '.dafeiyu-memory',
+              'memory.sqlite3'
+            )
+        toolCallTimeoutMs: 60000
+        failOnStartupError: true

@@ -1,0 +1,45 @@
+{
+  "name": "dafeiyu-memory-mcp-server",
+  "version": "0.2.1",
+  "description": "Local-first human-like memory MCP server for DSH and the Dafeiyu persona",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "dafeiyu-memory-mcp-server": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "scripts/stdio-smoke.mjs",
+    "scripts/dsh-smoke.mjs",
+    "scripts/start-dafeiyu-memory.ps1",
+    "scripts/install-agents-instructions.ps1",
+    "docs",
+    "README.md",
+    "dafeiyu-memory.AGENTS.md",
+    "dafeiyu-memory.cordis.yml"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js",
+    "test": "vitest run --config vitest.config.ts",
+    "smoke:stdio": "node scripts/stdio-smoke.mjs",
+    "smoke:dsh": "node scripts/dsh-smoke.mjs",
+    "instructions:install": "powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File scripts/install-agents-instructions.ps1",
+    "instructions:check": "powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File scripts/install-agents-instructions.ps1 -Check",
+    "test:watch": "vitest"
+  },
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.0",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.8"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "dafeiyu-memory-dsh",
+  "version": "0.2.1",
+  "description": "Installable DSH bundle for the local-first Dafeiyu memory MCP server",
+  "type": "module",
+  "files": [
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "scripts": {
+    "bundle:prepare": "node scripts/prepare-bundle.mjs",
+    "bundle:pack": "npm pack",
+    "prepack": "node scripts/prepare-bundle.mjs",
+    "smoke:install": "node scripts/smoke-install.mjs"
+  },
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "dependencies": {
+    "dafeiyu-memory-mcp-server": "file:../dafeiyu-memory"
+  },
+  "bundleDependencies": [
+    "dafeiyu-memory-mcp-server"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "engines": {
+      "dsh": ">=0.2.0-rc.1"
+    },
+    "compatibility": {
+      "dshReleases": {
+        "0.2.1-rc.3": "compatible",
+        "0.2.2-rc.1": "compatible"
+      }
+    }
+  }
+}
